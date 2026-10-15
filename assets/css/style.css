@@ -354,3 +354,76 @@ textarea.input { min-height: 120px; resize: vertical; }
   .hero-card.float-1 { top: 270px; width: 220px; }
   .hero-card.float-2 { width: 220px; }
 }
+
+/* ---------- Intro / splash ---------- */
+.intro { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; overflow: hidden; cursor: pointer; }
+.no-intro .intro { display: none; }
+.intro-active, .intro-active body { overflow: hidden; }
+.intro-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(800px 500px at 50% 40%, var(--primary-50), #fff 70%);
+}
+.intro-bg::before, .intro-bg::after {
+  content: ""; position: absolute; border-radius: 50%; background: var(--primary); opacity: .08;
+  animation: introBlob 3s ease-in-out infinite alternate;
+}
+.intro-bg::before { width: 420px; height: 420px; top: -140px; right: -120px; }
+.intro-bg::after { width: 320px; height: 320px; bottom: -120px; left: -100px; animation-delay: -1.5s; }
+.intro-content { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 20px; text-align: center; }
+.intro-brand { display: flex; align-items: center; gap: 18px; }
+.intro-logo {
+  width: 96px; height: 96px; border-radius: 6px; overflow: visible;
+  filter: drop-shadow(0 16px 30px rgba(60, 143, 250, .45));
+  animation: introPop .7s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+.intro-j { transform-box: fill-box; transform-origin: 50% 100%; animation: introRise .6s .25s cubic-bezier(.34, 1.56, .64, 1) both; }
+.intro-stroke { stroke-dasharray: 80; stroke-dashoffset: 80; animation: introDraw .6s .7s ease-out forwards; }
+.intro-dot { transform-box: fill-box; transform-origin: center; animation: introDrop .65s .6s cubic-bezier(.34, 1.56, .64, 1) both; }
+.intro-word { overflow: hidden; font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+.intro-word span { display: inline-block; animation: introSlide .7s .85s cubic-bezier(.22, 1, .36, 1) both; }
+.intro-word b { color: var(--primary); }
+.intro-tag { color: var(--ink-2); font-weight: 600; font-size: 1.05rem; animation: introFade .6s 1.25s ease both; }
+.intro-bar { width: 160px; height: 4px; border-radius: 4px; background: var(--primary-100); overflow: hidden; animation: introFade .4s 1.25s ease both; }
+.intro-bar span { display: block; height: 100%; width: 100%; background: var(--primary); transform-origin: left; animation: introLoad 1.4s 1.3s cubic-bezier(.65, 0, .35, 1) both; }
+.intro-skip {
+  position: absolute; right: 24px; bottom: 24px; border: 1.5px solid var(--line); background: rgba(255,255,255,.8);
+  padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: .85rem; color: var(--ink-2); cursor: pointer;
+  animation: introFade .4s .6s ease both;
+}
+.intro-skip:hover { color: var(--primary); border-color: var(--primary); }
+
+/* Exit: blue curtain sweeps up, then the whole intro lifts away */
+.intro::after {
+  content: ""; position: absolute; inset: 0; background: var(--primary); transform: translateY(100%);
+}
+.intro.hide::after { animation: introCurtain .9s cubic-bezier(.76, 0, .24, 1) forwards; }
+.intro.hide .intro-content, .intro.hide .intro-skip { animation: introOutUp .45s cubic-bezier(.76, 0, .24, 1) forwards; }
+.intro.hide { animation: introLeave .5s .75s cubic-bezier(.76, 0, .24, 1) forwards; pointer-events: none; }
+
+@keyframes introPop { from { transform: scale(0) rotate(-12deg); opacity: 0; } }
+@keyframes introRise { from { transform: translateY(30%) scale(.6); opacity: 0; } }
+@keyframes introDraw { to { stroke-dashoffset: 0; } }
+@keyframes introDrop { 0% { transform: translateY(-260%) scale(.6); opacity: 0; } 60% { opacity: 1; } }
+@keyframes introSlide { from { transform: translateY(110%); } }
+@keyframes introFade { from { opacity: 0; transform: translateY(8px); } }
+@keyframes introLoad { from { transform: scaleX(0); } }
+@keyframes introBlob { to { transform: translate(30px, 20px) scale(1.1); } }
+@keyframes introCurtain { 0% { transform: translateY(100%); } 55% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+@keyframes introOutUp { to { transform: translateY(-40px); opacity: 0; } }
+@keyframes introLeave { to { opacity: 0; visibility: hidden; } }
+
+/* Hero reveal after intro */
+.js .reveal { opacity: 0; }
+.ready .reveal { animation: revealUp .8s calc(var(--d, 0) * 90ms) cubic-bezier(.22, 1, .36, 1) both; }
+.ready .reveal-right { animation-name: revealRight; }
+@keyframes revealUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes revealRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; }
+  .ready .reveal { animation: none; }
+}
+@media (max-width: 600px) {
+  .intro-brand { gap: 12px; }
+  .intro-logo { width: 68px; height: 68px; }
+}

@@ -9,8 +9,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    // Decide before first paint whether to show the intro (once per session; ?intro=1 forces it).
+    (function () {
+      var h = document.documentElement, show = false;
+      h.classList.add('js');
+      try {
+        var forced = /[?&]intro=1/.test(location.search);
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        show = forced || (!sessionStorage.getItem('jasaq_intro') && !reduce);
+      } catch (e) {}
+      h.classList.add(show ? 'intro-active' : 'no-intro');
+    })();
+  </script>
 </head>
 <body data-page="home">
+  <!-- Intro / splash screen -->
+  <div class="intro" id="intro" role="presentation">
+    <div class="intro-bg"></div>
+    <div class="intro-content">
+      <div class="intro-brand">
+        <svg class="intro-logo" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" rx="2" fill="#3C8FFA"/>
+          <g class="intro-j">
+            <path fill="#fff" d="M42 24C52 34 64 48 65 66C66 82 56 93 42 93C28 93 20 80 19 63C24 72 30 80 39 79C48 78 52 70 51 58C50 46 47 36 42 24Z"/>
+            <path class="intro-stroke" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" d="M38.5 29C44 40 47.5 50 47.5 60C47.5 71 42 76.5 36 75.5C31 74.5 28 71 26 67.5"/>
+          </g>
+          <ellipse class="intro-dot" cx="52" cy="19" rx="8" ry="7" fill="#fff"/>
+        </svg>
+        <div class="intro-word"><span>Jasa<b>Q</b></span></div>
+      </div>
+      <p class="intro-tag">Ubah waktu luang jadi peluang nyata</p>
+      <div class="intro-bar"><span></span></div>
+    </div>
+    <button class="intro-skip" type="button">Lewati</button>
+  </div>
+
   <div id="site-header"></div>
 
   <main>
@@ -18,26 +52,26 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Platform jasa untuk UMKM</span>
-          <h1>Ubah <span class="text-primary">waktu luang</span> &amp; keahlianmu jadi peluang nyata</h1>
-          <p class="lead">JasaQ menghubungkan mahasiswa, freelancer, dan individu berkeahlian dengan UMKM yang butuh jasa terjangkau dan fleksibel, tanpa harus merekrut karyawan tetap.</p>
-          <form class="hero-cta" id="hero-search" role="search">
+          <span class="eyebrow reveal" style="--d:0">Platform jasa untuk UMKM</span>
+          <h1 class="reveal" style="--d:1">Ubah <span class="text-primary">waktu luang</span> &amp; keahlianmu jadi peluang nyata</h1>
+          <p class="lead reveal" style="--d:2">JasaQ menghubungkan mahasiswa, freelancer, dan individu berkeahlian dengan UMKM yang butuh jasa terjangkau dan fleksibel, tanpa harus merekrut karyawan tetap.</p>
+          <form class="hero-cta reveal" style="--d:3" id="hero-search" role="search">
             <div class="search" style="max-width:380px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
               <input class="input" id="hero-q" placeholder="Cari jasa, mis. desain poster" aria-label="Cari jasa"></div>
             <button class="btn btn-primary btn-lg">Cari Jasa</button>
           </form>
-          <div class="hero-cta" style="margin-top:-18px">
+          <div class="hero-cta reveal" style="margin-top:-18px;--d:4">
             <a href="pasang.html?tab=permintaan" class="btn btn-outline">Saya UMKM, pasang permintaan</a>
             <a href="pasang.html?tab=jasa" class="btn btn-ghost">Saya mau tawarkan jasa →</a>
           </div>
-          <div class="hero-stats">
+          <div class="hero-stats reveal" style="--d:5">
             <div><strong>2.400+</strong><span>Penyedia jasa</span></div>
             <div><strong>1.100+</strong><span>UMKM terbantu</span></div>
             <div><strong>4,8/5</strong><span>Rating rata-rata</span></div>
           </div>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual reveal reveal-right" style="--d:2" aria-hidden="true">
           <div class="hero-card main">
             <div class="mini-row" style="justify-content:space-between">
               <span class="badge">Desain Grafis</span><span class="badge green">● Tersedia</span>

@@ -436,7 +436,30 @@ function setupListing({ data, card, filters, sorts, match, sort, noun }) {
   render();
 }
 
+// ---------- Intro / splash ----------
+function runIntro() {
+  const html = document.documentElement;
+  const el = $('#intro');
+  const reveal = () => html.classList.add('ready');
+  if (!el || !html.classList.contains('intro-active')) { el?.remove(); reveal(); return; }
+
+  let finished = false;
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    try { sessionStorage.setItem('jasaq_intro', '1'); } catch {}
+    el.classList.add('hide');
+    setTimeout(() => { html.classList.remove('intro-active'); reveal(); }, 700);
+    setTimeout(() => el.remove(), 1300);
+  };
+  const timer = setTimeout(finish, 2900);
+  const skip = () => { clearTimeout(timer); finish(); };
+  el.addEventListener('click', skip);
+  document.addEventListener('keydown', (e) => { if (['Escape', 'Enter', ' '].includes(e.key)) skip(); }, { once: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  runIntro();
   renderLayout();
   const page = document.body.dataset.page;
   const map = { home: 'home', services: 'services', requests: 'requests', detail: 'detail', post: 'post', auth: 'auth' };
