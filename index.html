@@ -26,7 +26,7 @@
 <body data-page="home">
   <!-- Intro / splash screen -->
   <div class="intro" id="intro" role="presentation">
-    <div class="intro-bg"></div>
+    <div class="intro-bg"><div class="intro-bubbles"></div></div>
     <div class="intro-content">
       <div class="intro-brand">
         <svg class="intro-logo" viewBox="0 0 100 100" aria-hidden="true">
@@ -49,7 +49,22 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero sea-hero">
+      <div class="sea" aria-hidden="true">
+        <div class="sea-rays"><span></span><span></span><span></span><span></span></div>
+        <div class="sea-bubbles"></div>
+        <svg class="fish fish-1" viewBox="0 0 64 32"><path d="M4 16c8-11 26-13 38-5l14-8-4 13 4 13-14-8C30 29 12 27 4 16Z"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>
+        <svg class="fish fish-2" viewBox="0 0 64 32"><path d="M4 16c8-11 26-13 38-5l14-8-4 13 4 13-14-8C30 29 12 27 4 16Z"/><circle cx="14" cy="14" r="2" fill="#fff"/></svg>
+        <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none">
+          <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+          <g class="wave-layers">
+            <use href="#gentle-wave" x="48" y="0" fill="rgba(60,143,250,.16)"/>
+            <use href="#gentle-wave" x="48" y="3" fill="rgba(60,143,250,.24)"/>
+            <use href="#gentle-wave" x="48" y="5" fill="rgba(60,143,250,.12)"/>
+            <use href="#gentle-wave" x="48" y="7" fill="#F7F9FC"/>
+          </g>
+        </svg>
+      </div>
       <div class="container hero-grid">
         <div>
           <span class="eyebrow reveal" style="--d:0">Platform jasa untuk UMKM</span>
@@ -65,9 +80,9 @@
             <a href="pasang.html?tab=jasa" class="btn btn-ghost">Saya mau tawarkan jasa →</a>
           </div>
           <div class="hero-stats reveal" style="--d:5">
-            <div><strong>2.400+</strong><span>Penyedia jasa</span></div>
-            <div><strong>1.100+</strong><span>UMKM terbantu</span></div>
-            <div><strong>4,8/5</strong><span>Rating rata-rata</span></div>
+            <div><strong data-count="services">0</strong><span>Jasa ditawarkan</span></div>
+            <div><strong data-count="requests">0</strong><span>Permintaan UMKM</span></div>
+            <div><strong data-count="users">0</strong><span>Pengguna terdaftar</span></div>
           </div>
         </div>
 
@@ -215,6 +230,7 @@
     <!-- CTA -->
     <section class="container">
       <div class="cta">
+        <div class="cta-bubbles" aria-hidden="true"></div>
         <h2>Siap mulai bersama JasaQ?</h2>
         <p>Gabung gratis hari ini. Temukan jasa yang kamu butuhkan, atau ubah waktu luangmu jadi penghasilan.</p>
         <div class="hero-cta">
@@ -226,7 +242,10 @@
   </main>
 
   <div id="site-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/db.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

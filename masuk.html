@@ -15,26 +15,41 @@
     <div class="auth-side">
       <img src="assets/img/logo.svg" alt="JasaQ logo">
       <h2>Waktu luangmu berharga.</h2>
-      <p>Bergabung dengan ribuan penyedia jasa dan UMKM yang saling membantu tumbuh bersama di JasaQ.</p>
+      <p>Bergabung dengan penyedia jasa dan UMKM yang saling membantu tumbuh bersama di JasaQ.</p>
+      <ul class="auth-privacy">
+        <li>🔒 Kata sandi dienkripsi, kami tidak bisa melihatnya</li>
+        <li>🙈 Email &amp; nomor HP tidak pernah ditampilkan ke pengguna lain</li>
+        <li>💬 Pesan hanya bisa dibaca oleh pengirim &amp; penerima</li>
+      </ul>
     </div>
     <div class="auth-main">
-      <form class="auth-form" id="auth-form">
-        <h1 id="auth-title">Selamat datang kembali</h1>
-        <p class="muted" id="auth-sub" style="margin-bottom:24px">Masuk untuk melanjutkan.</p>
-        <div class="role-pick">
-          <label><input type="radio" name="role" value="provider" checked><div><strong>Penyedia Jasa</strong><small>Mahasiswa, freelancer</small></div></label>
-          <label><input type="radio" name="role" value="umkm"><div><strong>UMKM</strong><small>Pemilik usaha</small></div></label>
-        </div>
-        <div class="field reg-only"><label>Nama lengkap</label><input class="input" name="name" data-req placeholder="Nama kamu"></div>
-        <div class="field" id="biz-field"><label>Nama usaha</label><input class="input" name="business" placeholder="mis. Kedai Kopi Senja"></div>
-        <div class="field"><label>Email</label><input class="input" type="email" name="email" required placeholder="nama@email.com"></div>
-        <div class="field"><label>Kata sandi</label><input class="input" type="password" name="password" required minlength="6" placeholder="Minimal 6 karakter"></div>
-        <button class="btn btn-primary btn-lg btn-block" id="auth-submit">Masuk</button>
-        <p class="auth-switch" id="auth-switch"></p>
-      </form>
+      <div class="auth-form">
+        <div id="auth-notice" class="auth-notice" hidden></div>
+        <form id="auth-form">
+          <h1 id="auth-title">Selamat datang kembali</h1>
+          <p class="muted" id="auth-sub" style="margin-bottom:24px">Masuk untuk melanjutkan.</p>
+          <div class="role-pick" data-modes="daftar">
+            <label><input type="radio" name="role" value="provider" checked><div><strong>Penyedia Jasa</strong><small>Mahasiswa, freelancer</small></div></label>
+            <label><input type="radio" name="role" value="umkm"><div><strong>UMKM</strong><small>Pemilik usaha</small></div></label>
+          </div>
+          <div class="field" data-modes="daftar"><label for="f-name">Nama lengkap</label><input class="input" id="f-name" name="name" data-req maxlength="60" autocomplete="name" placeholder="Nama kamu"></div>
+          <div class="field" id="biz-field" hidden><label for="f-biz">Nama usaha</label><input class="input" id="f-biz" name="business" maxlength="80" placeholder="mis. Kedai Kopi Senja"></div>
+          <div class="field" data-modes="masuk daftar lupa"><label for="f-email">Email</label><input class="input" id="f-email" type="email" name="email" data-req autocomplete="email" placeholder="nama@email.com"></div>
+          <div class="field" data-modes="masuk daftar reset">
+            <label for="f-pass" style="display:flex;justify-content:space-between">Kata sandi <a class="text-primary" data-mode="lupa" href="#" data-modes="masuk" style="font-weight:600;font-size:.85rem">Lupa?</a></label>
+            <input class="input" id="f-pass" type="password" name="password" data-req minlength="6" placeholder="Minimal 8 karakter">
+          </div>
+          <div class="field" data-modes="daftar reset"><label for="f-pass2">Ulangi kata sandi</label><input class="input" id="f-pass2" type="password" name="password2" data-req autocomplete="new-password" placeholder="Ketik ulang kata sandi"></div>
+          <button class="btn btn-primary btn-lg btn-block" id="auth-submit">Masuk</button>
+          <p class="auth-switch" id="auth-switch"></p>
+        </form>
+      </div>
     </div>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/db.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
