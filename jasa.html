@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cari Jasa | JasaQ</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="services">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Beranda</a> / Cari Jasa</div>
+        <h1>Temukan jasa untuk usahamu</h1>
+        <p class="lead">Penyedia jasa terjangkau yang siap bantu sesuai waktu luang mereka.</p>
+      </div>
+    </section>
+    <div class="container listing">
+      <form class="filters" id="filter-form" onsubmit="return false">
+        <div id="filters"></div>
+        <button type="button" class="btn btn-outline btn-block btn-sm" id="reset-filters" style="margin-top:20px">Reset filter</button>
+      </form>
+      <div>
+        <div class="toolbar">
+          <div class="search"><input class="input" id="q" placeholder="Cari jasa, penyedia, atau kategori" aria-label="Cari"></div>
+          <select class="input" id="sort" style="width:auto" aria-label="Urutkan"></select>
+          <button type="button" class="btn btn-outline filter-toggle">Filter</button>
+        </div>
+        <p class="result-count" id="result-count"></p>
+        <div class="grid-3" id="results"></div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

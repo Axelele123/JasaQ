@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasang Permintaan atau Jasa | JasaQ</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="post">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-head">
+      <div class="container" style="text-align:center">
+        <div class="crumbs"><a href="index.html">Beranda</a> / Pasang</div>
+        <h1>Apa yang ingin kamu pasang?</h1>
+        <p class="lead">UMKM pasang kebutuhan, penyedia jasa tawarkan keahlian.</p>
+      </div>
+    </section>
+    <div class="container" style="max-width:760px;text-align:center">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-target="form-permintaan" role="tab">Saya UMKM: Pasang Permintaan</button>
+        <button class="tab" data-target="form-jasa" role="tab">Saya Penyedia: Tawarkan Jasa</button>
+      </div>
+
+      <div class="tab-panel active" id="form-permintaan" style="text-align:left">
+        <form class="form-card post-form" novalidate>
+          <h3 style="margin-bottom:20px">Detail permintaan</h3>
+          <div class="field"><label>Nama usaha *</label><input class="input" name="business" required placeholder="mis. Kedai Kopi Senja"><span class="error">Nama usaha wajib diisi</span></div>
+          <div class="field"><label>Judul kebutuhan *</label><input class="input" name="title" required placeholder="mis. Butuh poster promo menu baru"><span class="error">Judul wajib diisi</span></div>
+          <div class="field-row">
+            <div class="field"><label>Kategori *</label><select class="input" name="category" required></select><span class="error">Pilih kategori</span></div>
+            <div class="field"><label>Lokasi</label><input class="input" name="location" placeholder="Kota atau 'Online'"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Budget (Rp) *</label><input class="input" type="number" name="budget" min="1000" step="1000" required placeholder="75000"><span class="error">Masukkan budget yang valid</span></div>
+            <div class="field"><label>Tenggat *</label><input class="input" type="date" name="deadline" required><span class="error">Pilih tenggat</span></div>
+          </div>
+          <div class="field"><label>Deskripsi *</label><textarea class="input" name="description" required placeholder="Jelaskan kebutuhanmu: ukuran, gaya, jumlah, referensi, dll."></textarea><span class="error">Deskripsi wajib diisi</span></div>
+          <button class="btn btn-primary btn-lg btn-block">Pasang Permintaan</button>
+        </form>
+      </div>
+
+      <div class="tab-panel" id="form-jasa" style="text-align:left">
+        <form class="form-card post-form" novalidate>
+          <h3 style="margin-bottom:20px">Detail jasa</h3>
+          <div class="field-row">
+            <div class="field"><label>Nama kamu *</label><input class="input" name="provider" required placeholder="Nama lengkap"><span class="error">Nama wajib diisi</span></div>
+            <div class="field"><label>Status / peran</label><input class="input" name="role" placeholder="mis. Mahasiswa DKV"></div>
+          </div>
+          <div class="field"><label>Judul jasa *</label><input class="input" name="title" required placeholder="mis. Desain poster promosi simpel"><span class="error">Judul wajib diisi</span></div>
+          <div class="field-row">
+            <div class="field"><label>Kategori *</label><select class="input" name="category" required></select><span class="error">Pilih kategori</span></div>
+            <div class="field"><label>Lokasi</label><input class="input" name="location" placeholder="Kota atau 'Online'"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Harga (Rp) *</label><input class="input" type="number" name="price" min="1000" step="1000" required placeholder="50000"><span class="error">Masukkan harga yang valid</span></div>
+            <div class="field"><label>Satuan *</label>
+              <select class="input" name="unit" required><option>per desain</option><option>per jam</option><option>per proyek</option><option>per foto</option><option>per video</option><option>per halaman</option><option>per minggu</option></select></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Waktu luang per hari (jam) *</label><input class="input" type="number" name="hours" min="1" max="12" required placeholder="3"><span class="error">Isi jumlah jam</span></div>
+            <div class="field"><label>Estimasi selesai</label><input class="input" name="delivery" placeholder="mis. 1 hari"></div>
+          </div>
+          <div class="field"><label>Hari tersedia *</label>
+            <div class="day-picker">
+              <label><input type="checkbox" name="days" value="Sen"><span>Sen</span></label>
+              <label><input type="checkbox" name="days" value="Sel"><span>Sel</span></label>
+              <label><input type="checkbox" name="days" value="Rab"><span>Rab</span></label>
+              <label><input type="checkbox" name="days" value="Kam"><span>Kam</span></label>
+              <label><input type="checkbox" name="days" value="Jum"><span>Jum</span></label>
+              <label><input type="checkbox" name="days" value="Sab"><span>Sab</span></label>
+              <label><input type="checkbox" name="days" value="Min"><span>Min</span></label>
+            </div>
+            <span class="error">Pilih minimal satu hari</span>
+          </div>
+          <div class="field"><label>Deskripsi *</label><textarea class="input" name="description" required placeholder="Ceritakan keahlian dan pengalamanmu."></textarea><span class="error">Deskripsi wajib diisi</span></div>
+          <div class="field"><label>Yang didapat klien</label><textarea class="input" name="includes" style="min-height:90px" placeholder="Satu poin per baris, mis.&#10;1 desain poster&#10;2x revisi"></textarea></div>
+          <button class="btn btn-primary btn-lg btn-block">Tayangkan Jasa</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
